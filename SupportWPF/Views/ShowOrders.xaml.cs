@@ -27,10 +27,9 @@ namespace SupportWPF.Views
             InitializeComponent();
             CreateDataGridLayout();
 
-            cb_Priority.Items.Add("Low");
-            cb_Priority.Items.Add("Medium");
-            cb_Priority.Items.Add("High");
-            cb_Priority.Items.Add("Critical");
+            cb_Status.Items.Add("Not Started");
+            cb_Status.Items.Add("Ongoing");
+            cb_Status.Items.Add("Closed");
 
             
         }
@@ -105,12 +104,13 @@ namespace SupportWPF.Views
             tb_Deadline.Text = "Time Left: ";
             tb_Subject.Text = "Subject: ";
             tb_Product.Text = "Product: ";
-            tb_ArticleNumber.Text = "Article number: ";
+            tb_ArticleNumber.Text = "Product Id: ";
             tb_Name.Text = "Name: ";
             tb_Email.Text = "Email: ";
             tb_PhoneNumber.Text = "Phone number: ";
             tb_Status.Text = "Status: ";
             tb_Address.Text = "Address: ";
+            tb_Priority.Text = "Priority: ";
             tb_Comment.Text = "Employee comment: ";
 
             foreach (OrderRow or in dg_Orders.SelectedItems)
@@ -125,18 +125,18 @@ namespace SupportWPF.Views
                 tb_Email.Text += or.Email;
                 tb_PhoneNumber.Text += or.PhoneNumber;
                 tb_Address.Text += or.Address;
-                tb_Comment.Text += or.Comment;
-                tb_Status.Text += or.OrderStatus;
-                cb_Priority.SelectedValue = or.Priority;
+                tBox_Comment.Text = or.Comment;
+                tb_Priority.Text += or.Priority;
+                cb_Status.SelectedValue = or.OrderStatus;
                 tb_Deadline.Text += ts.ToString("d' Days 'h' Hours 'm' Minutes'");
             }
         }
 
-        private async void Cb_Priority_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void Cb_Status_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             foreach (OrderRow or in dg_Orders.SelectedItems)
             {
-                or.Priority = cb_Priority.SelectedValue.ToString()!;
+                or.OrderStatus = cb_Status.SelectedValue.ToString()!;
                 await OrderService.UpdateAsync(or);
             }
         }
@@ -146,10 +146,8 @@ namespace SupportWPF.Views
             foreach (OrderRow or in dg_Orders.SelectedItems)
             {
                 or.Comment = tBox_Comment.Text;
-                tb_Comment.Text += tBox_Comment.Text;
                 await OrderService.UpdateAsync(or);
             }
-            tBox_Comment.Text = "";
             dg_Orders.ItemsSource = await OrderService.GetAllAsync();
         }
     }

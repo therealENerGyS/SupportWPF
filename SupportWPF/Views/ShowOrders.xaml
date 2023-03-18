@@ -30,14 +30,17 @@
                 <StackPanel Grid.Column="0" Grid.Row="0" Margin="0 0 15 0">
                     <TextBlock x:Name="tb_TicketId" Text="Ticket ID: " FontSize="22" FontWeight="SemiBold"/>
                     <TextBlock x:Name="tb_CreatedOn" Text="Created On: " FontSize="22" FontWeight="SemiBold" />
-                    <TextBlock x:Name="tb_Subject" Text="Subject: "/>
-                    <TextBlock x:Name="tb_Product" Text="Product: "/>
-                    <TextBlock x:Name="tb_ArticleNumber" Text="Article number: "/>
+                    <TextBlock x:Name="tb_Subject" Text="Subject: " FontSize="18" />
+                    <TextBlock x:Name="tb_Product" Text="Product: " FontSize="18" />
+                    <TextBlock x:Name="tb_ArticleNumber" Text="Product Id: " FontSize="18" />
+                    <TextBlock x:Name="tb_Priority" Text="Priority: "/>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock x:Name="tb_Priority" Text="Priority: "/>
-                        <ComboBox x:Name="cb_Priority" SelectionChanged="Cb_Priority_SelectionChanged" Width="100" HorizontalAlignment="Left"/>
+                        
                     </StackPanel>
-                    <TextBlock x:Name="tb_Status" Text="Status: "/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Name="tb_Status" Text="Status: "/>
+                        <ComboBox x:Name="cb_Status" SelectionChanged="Cb_Status_SelectionChanged" Width="100" HorizontalAlignment="Left"/>
+                    </StackPanel>
                     <TextBlock x:Name="tb_Deadline" Text="Time left: "/>
                 </StackPanel>
                 
@@ -66,7 +69,17 @@
                     FontSize="20"
                     FontWeight="SemiBold"
                     Background="#3A7BF4"
-                    Foreground="White"/>
+                    Foreground="White">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10"
+                                Background="#007FFF"
+                                Padding="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </Grid>
         <DataGrid Grid.Row="1"
                   x:Name="dg_Orders"
@@ -100,7 +113,7 @@
                     <Style.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter Property="BorderThickness" Value="0" />
-                            <Setter Property="Background" Value="Pink" />
+                            <Setter Property="Background" Value="#3A7BF4" />
                         </Trigger>
                     </Style.Triggers>
                     <Style.Setters>

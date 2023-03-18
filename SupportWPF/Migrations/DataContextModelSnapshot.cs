@@ -47,7 +47,7 @@ namespace SupportWPF.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("SupportWPF.Models.Entities.CustomerEntity", b =>
@@ -79,7 +79,7 @@ namespace SupportWPF.Migrations
 
                     b.HasIndex("AddressId");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("SupportWPF.Models.Entities.OrderRowEntity", b =>
@@ -123,7 +123,7 @@ namespace SupportWPF.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderRows");
+                    b.ToTable("OrderRows", (string)null);
                 });
 
             modelBuilder.Entity("SupportWPF.Models.Entities.ProductEntity", b =>
@@ -138,7 +138,7 @@ namespace SupportWPF.Migrations
 
                     b.HasKey("ArticleNumber");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("SupportWPF.Models.Entities.CustomerEntity", b =>
