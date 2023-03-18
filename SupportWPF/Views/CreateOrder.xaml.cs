@@ -52,20 +52,6 @@ namespace SupportWPF.Views
             ClearText();
         }
 
-        private void Btn_Auto_Click(object sender, RoutedEventArgs e)
-        {
-            tb_ProductName.Text = "Monitor";
-            tb_Subject.Text = "Cracked";
-            tb_FirstName.Text = "Bert";
-            tb_LastName.Text = "Bertsson";
-            tb_Email.Text = "bert@domain.com";
-            tb_PhoneNumber.Text = "070-123 45 67";
-            tb_StreetName.Text = "Bertvägen";
-            tb_StreetNumber.Text = "68G";
-            tb_PostalCode.Text = "123 45";
-            tb_City.Text = "Bertil";
-        }
-
         private void Tb_PhoneNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (Regex.IsMatch(tb_PhoneNumber.Text + e.Text, @"^\d{0,3}-?\d{0,3}\s?\d{0,2}\s?\d{0,2}$"))

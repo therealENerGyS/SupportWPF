@@ -24,25 +24,6 @@
             <Border CornerRadius="10" BorderThickness="1" BorderBrush="Gray">
                 <TextBox x:Name="tb_Subject" Text="{Binding Subject}" BorderThickness="0" Width="250" MaxLength="150" Margin="3" FontSize="20" TextWrapping="Wrap" />
             </Border>
-            <Button Content="Automatically add text"
-                    Padding="8"
-                    FontSize="18"
-                    FontWeight="SemiBold"
-                    BorderThickness="0"
-                    Background="#3A7BF4"
-                    Foreground="White"
-                    Margin="0 10 0 0"
-                    Click="Btn_Auto_Click">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="10"
-                                Background="#007FFF"
-                                Padding="10">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="10">
             <TextBlock Text="First Name" HorizontalAlignment="Center" FontSize="18" FontWeight="SemiBold"/>
