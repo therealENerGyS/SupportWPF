@@ -30,8 +30,6 @@ namespace SupportWPF.Views
             cb_Status.Items.Add("Not Started");
             cb_Status.Items.Add("Ongoing");
             cb_Status.Items.Add("Closed");
-
-            
         }
 
         public async void CreateDataGridLayout()
@@ -139,6 +137,7 @@ namespace SupportWPF.Views
                 or.OrderStatus = cb_Status.SelectedValue.ToString()!;
                 await OrderService.UpdateAsync(or);
             }
+            dg_Orders.ItemsSource = await OrderService.GetAllAsync();
         }
 
         private async void Btn_SaveTicket_Click(object sender, RoutedEventArgs e)
